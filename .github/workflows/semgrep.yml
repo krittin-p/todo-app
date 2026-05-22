@@ -1,0 +1,26 @@
+name: Semgrep Scan
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  semgrep:
+    name: Semgrep Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: returntocorp/semgrep-action@v1
+        with:
+          config: |
+            p/javascript
+            p/typescript
+            p/python
+            p/flask
+            p/nodejs
+            p/express
+            p/owasp-top-ten
+            p/secrets
+            .semgrep/custom-rules.yml
