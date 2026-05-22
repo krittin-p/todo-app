@@ -20,7 +20,10 @@ jobs:
         with:
           languages: javascript
           build-mode: none
-          queries: security-extended
+          queries: security-and-quality
+          paths: |
+            frontend
+            backend
 
       - uses: github/codeql-action/analyze@v4
         with:
