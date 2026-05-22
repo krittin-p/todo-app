@@ -37,3 +37,24 @@ rules:
     message: "ห้ามใช้ exec() อันตรายมาก"
     severity: ERROR
     languages: [python]
+
+  # ห้าม innerHTML กับ dynamic data
+  - id: no-inner-html
+    pattern: $X.innerHTML = $Y
+    message: "อย่าใช้ innerHTML กับ untrusted data — ใช้ textContent แทน"
+    severity: ERROR
+    languages: [javascript, typescript]
+
+  # ห้าม outerHTML กับ dynamic data
+  - id: no-outer-html
+    pattern: $X.outerHTML = $Y
+    message: "อย่าใช้ outerHTML กับ untrusted data — XSS risk"
+    severity: ERROR
+    languages: [javascript, typescript]
+
+  # ห้าม document.write
+  - id: no-document-write
+    pattern: document.write(...)
+    message: "ห้ามใช้ document.write() — XSS risk"
+    severity: ERROR
+    languages: [javascript, typescript]
